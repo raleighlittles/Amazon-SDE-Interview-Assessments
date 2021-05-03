@@ -1,3 +1,5 @@
+![](https://github.com/raleighlittles/Amazon-HackerRank-Assessment/actions/workflows/.github/workflows/main.yml/badge.svg)
+
 # About
 
 This repository contains my solutions to Amazon's HackerRank assessment for Software Development Engineers.
