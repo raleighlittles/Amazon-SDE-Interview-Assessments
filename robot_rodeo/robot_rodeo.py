@@ -1,9 +1,5 @@
 # Complete the 'doesCircleExist' function below.
 
-
-from turtle import pos
-
-
 def doesCircleExist(commands):
     # Write your code here.
     results = []
