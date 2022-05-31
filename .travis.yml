@@ -1,0 +1,6 @@
+language: python
+python:
+  - "nightly"
+
+script:
+  - python3 -m unittest discover -v
