@@ -1,3 +1,5 @@
+![CI build badge](https://github.com/raleighlittles/Amazon-SDE-Interview-Assessments/actions/workflows/main.yml/badge.svg)
+
 # About
 
 This project contains two Amazon software development engineer technical interview/assessments. The first was completed in 2019, administered via AMCAT, and the second was in 2021, via HackerRank.
