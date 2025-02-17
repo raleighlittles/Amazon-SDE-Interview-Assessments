@@ -27,4 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run Python unit tests
-        run: python3 -m unittest discover -v
+        run: python3 -m unittest discover -v 2019 && python3 -m unittest discover -v 2021
