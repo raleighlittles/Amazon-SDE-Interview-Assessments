@@ -26,5 +26,5 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run unit tests
-        run: python3 -m unittest discover -v
+      - name: Run Python unit tests
+        run: python3 -m unittest discover -v 2019 && python3 -m unittest discover -v 2021
