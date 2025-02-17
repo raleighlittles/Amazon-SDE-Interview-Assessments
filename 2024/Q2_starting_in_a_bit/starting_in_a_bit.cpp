@@ -6,21 +6,30 @@
 
 int findPattern(const uint32_t numBytes, const uint8_t data[])
 {
-    if ((data == nullptr) || (sizeof(data) < sizeof(uint32_t)))
+    if (data == nullptr)
     {
         return -2;
     }
 
     const uint32_t PATTERN = 0xFE'6B'28'40;
 
-    for (size_t arrIdx = 0; arrIdx < numBytes - sizeof(uint32_t); arrIdx++)
+    for (size_t arrIdx = 0; arrIdx < (sizeof(data) / sizeof(data[0])) - 3; arrIdx++)
     {
-        for (size_t bitIdx = 0; bitIdx < sizeof(uint32_t) * 8; bitIdx++)
+        for (size_t bitIdx = 0; bitIdx < 8; bitIdx++)
         {
-            uint32_t window = ((data[arrIdx] >> bitIdx) & (( 1 << (32 - bitIdx)) - 1)) | (data[arrIdx + 1] & ((1 << bitIdx) - 1)) << (32 - bitIdx);
-            if (window == PATTERN)
+            uint32_t window = (
+                (data[arrIdx] >> bitIdx) |
+                (data[arrIdx + 1] << (8 - bitIdx)) |
+                (data[arrIdx + 2] << (16 - bitIdx)) |
+                (data[arrIdx + 3] << (24 - bitIdx))
+            ) & 0xFFFFFFFF;
+
+            // Debug
+            //std::cout << "[Elem #" << arrIdx << "]" << " [Bit #" << bitIdx << "] (Overall #" << (arrIdx * 8 + bitIdx) << ") Window: " << std::hex << window << std::dec << std::endl;
+
+            if (ntohl(window) == PATTERN)
             {
-                return arrIdx * 32 + bitIdx;
+                return arrIdx * 8 + bitIdx;
             }
         }
     }
@@ -43,7 +52,7 @@ int main(void)
         char *endptr;
         long x = std::strtol(cur_line.c_str(), &endptr, 0);
 
-        if (errno != 0 || (*endptr != '\n' && *endptr '\0') || x > UINT8_MAX)
+        if (errno != 0 || (*endptr != '\n' && *endptr != '\0') || x > UINT8_MAX)
         {
             std::cerr << "Malformed test input!" << std::endl;
             return -1;

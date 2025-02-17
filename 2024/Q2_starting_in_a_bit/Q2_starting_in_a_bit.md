@@ -48,3 +48,6 @@ Inputs:
 
 * `numBytes` = 8
 * `data` = `[0x00, 0x03, 0xFC, 0xD6, 0x50, 0x80, 0x04, 0x06]`
+
+Return: "15". See explanation below.
+![explanation diagram](./non-aligned-search-diagram.svg)
