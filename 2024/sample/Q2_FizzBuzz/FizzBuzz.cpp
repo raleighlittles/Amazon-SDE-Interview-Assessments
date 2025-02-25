@@ -14,7 +14,7 @@ void fizzBuzz(int n)
             {
                 std::cout << "Buzz";
             }
-            
+
             std::cout << std::endl;
         }
         else if (i % 5 == 0)

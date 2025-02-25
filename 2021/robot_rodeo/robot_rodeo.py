@@ -42,12 +42,11 @@ def doesCircleExist(commands):
 
             if circle_found:
                 results.append("YES")
-                
+
             else:
                 results.append("NO")
 
     return results
-
 
 
 # Returns a pair of coordinates representing the new position of the robot
@@ -67,4 +66,3 @@ def increment_coords(coord_x, coord_y, direction):
         pos_x -= 1
 
     return pos_x, pos_y
-
